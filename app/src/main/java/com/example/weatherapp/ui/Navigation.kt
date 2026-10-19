@@ -2,8 +2,8 @@ package com.example.weatherapp.ui
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.CalendarViewWeek
+import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,7 +25,7 @@ import androidx.compose.runtime.setValue
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation() {
-    // Holds which tab is selected (0 = Search, 1 = Favorite). Gets redrawn with compose after changing
+    // Holds which tab is selected (0 = Current Weather, 1 = Daily Forecast). Gets redrawn with compose after changing
     var selectedTab by remember { mutableStateOf(0) }
     Scaffold(topBar = {
         TopAppBar(
@@ -34,7 +34,7 @@ fun Navigation() {
                 titleContentColor = MaterialTheme.colorScheme.primary,
             ),
             title = {
-                Text("Top app bar")
+                Text("Weather")
             }
         )
     },
@@ -44,7 +44,7 @@ fun Navigation() {
                 windowInsets = NavigationBarDefaults.windowInsets)
             {
                 NavigationBarItem(
-                    icon = { Icon(imageVector = Icons.Default.Search, contentDescription = "Search") },
+                    icon = { Icon(imageVector = Icons.Default.Cloud, contentDescription = "Current Weather") },
                     label = { Text("Current Weather") },
                     // Highlighted only when this tab is selected
                     selected = selectedTab == 0,
@@ -53,7 +53,7 @@ fun Navigation() {
                 )
 
                 NavigationBarItem(
-                    icon = { Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorites") },
+                    icon = { Icon(imageVector = Icons.Default.CalendarViewWeek, contentDescription = "Daily Forecast") },
                     label = { Text("Daily Forecast") },
                     // Switches to this tab when selected
                     selected = selectedTab == 1,
